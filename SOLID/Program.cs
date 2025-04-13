@@ -2,4 +2,5 @@
 
 Console.WriteLine("I am the SOLID program.");
 
-var singleResponsibilityPrinciple = new SingleResponsibilityPrinciple();
+// new SingleResponsibilityPrinciple();
+new OpenClosedPrinciple();

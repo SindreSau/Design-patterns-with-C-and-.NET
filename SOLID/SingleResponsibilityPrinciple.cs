@@ -10,7 +10,10 @@ public class SingleResponsibilityPrinciple
 
         Journal j = new();
         j.AddEntry("This is my first day using the journal.");
-        j.AddEntry("Today i learned about the Single Responsibility Principle");
+        j.AddEntry("Today i learned about the Single Responsibility Principle.");
+        j.AddEntry("The idea is that a class should have only one reason to change.");
+        j.AddEntry("This means that a class should only have one job or responsibility.");
+        j.AddEntry("Following this principle ensures that the code is easier to maintain, understand and test.");
 
         var filename = "journal.txt";
         Persistence.SaveToFile(j,filename);
