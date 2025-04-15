@@ -3,4 +3,5 @@
 Console.WriteLine("I am the SOLID program.");
 
 // new SingleResponsibilityPrinciple();
-new OpenClosedPrinciple();
+// new OpenClosedPrinciple();
+new LiskovSubstitution();
