@@ -8,5 +8,11 @@ the Gang of Four book, Erich Gamma. The three typical Gamma categorizations are:
 - Wholesale (creating a whole object) or piecewise (step by step, e.g. Builder)
 
 ## Structural patterns
+- Concerned with the structure of classes and objects
+  - how they compose to form larger structures, for example by using inheritance or interfaces
+
 
 ## Behavioral patterns
+
+- They are all different; no single theme
+- Concerned with the interaction and responsibility of objects
