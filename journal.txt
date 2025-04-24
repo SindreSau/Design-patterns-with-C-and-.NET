@@ -1,0 +1,6 @@
+My Journal: 
+This is my first day using the journal.
+Today i learned about the Single Responsibility Principle.
+The idea is that a class should have only one reason to change.
+This means that a class should only have one job or responsibility.
+Following this principle ensures that the code is easier to maintain, understand and test.

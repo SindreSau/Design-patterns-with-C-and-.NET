@@ -5,6 +5,13 @@ Dependency Inversion Principle (DIP)
 
 High-level modules should not depend on low-level modules. Both should depend on abstractions.
 
+Simple example:
+1. A high-level module (Car) that uses a low-level module (Engine).
+2. The high-level module should not depend on the low-level module directly.
+3. Instead, both should depend on an abstraction (IEngine).
+4. This allows for flexibility and easier testing, as the high-level module can work with any implementation of the
+abstraction.
+
 Here it is being followed by:
 1. Defining an interface (IRelationshipBrowser) that abstracts the relationship operations.
 2. The high-level module (Research) depends on the abstraction (IRelationshipBrowser) instead of the concrete

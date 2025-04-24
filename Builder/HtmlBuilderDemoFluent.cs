@@ -2,11 +2,18 @@ using System.Text;
 
 namespace Builder;
 
-public class HtmlBuilderDemo
+/*
+Fluent interfaces are a way to make APIs easier to use by being able to chain methods together.
+
+In this case, returning a HtmlBuilderFluent object from the AddChild method allows us to chain calls together. This
+was not possible in the HtmlBuilder class, where we had to call AddChild separately.
+*/
+
+public class HtmlBuilderDemoFluent
 {
-    public HtmlBuilderDemo()
+    public HtmlBuilderDemoFluent()
     {
-        Console.WriteLine("I am the HtmlBuilderDemo.");
+        Console.WriteLine("I am the HtmlBuilderFluentDemo.");
 
         // Without builder would look something like this:
         /*
@@ -17,16 +24,17 @@ public class HtmlBuilderDemo
         */
 
         // With builder
-        var builder = new HtmlBuilder("html");
+        var builder = new HtmlBuilderFluent("html");
 
-        var headBuilder = new HtmlBuilder("head");
+        var headBuilder = new HtmlBuilderFluent("head");
         headBuilder.AddChild("title", "Hello World");
         builder.AddElement(headBuilder.Root);
 
-        var bodyBuilder = new HtmlBuilder("body");
-        var ulBuilder = new HtmlBuilder("ul");
-        ulBuilder.AddChild("li", "Hello");
-        ulBuilder.AddChild("li", "World");
+        var bodyBuilder = new HtmlBuilderFluent("body");
+        var ulBuilder = new HtmlBuilderFluent("ul");
+        ulBuilder
+            .AddChild("li", "Hello")
+            .AddChild("li", "World");
         bodyBuilder.AddElement(ulBuilder.Root);
         builder.AddElement(bodyBuilder.Root);
 
@@ -34,12 +42,12 @@ public class HtmlBuilderDemo
     }
 }
 
-public class HtmlBuilder
+internal class HtmlBuilderFluent
 {
     public HtmlElement Root = new();
     private readonly string? _rootName;
 
-    public HtmlBuilder(string? rootName)
+    public HtmlBuilderFluent(string? rootName)
     {
         _rootName = rootName;
         Root.Name = rootName;
@@ -50,10 +58,11 @@ public class HtmlBuilder
         Root.Elements.Add(element);
     }
 
-    public void AddChild(string childName, string childText)
+    public HtmlBuilderFluent AddChild(string childName, string childText)
     {
         var e = new HtmlElement(childName, childText);
         Root.Elements.Add(e);
+        return this;
     }
 
     public override string ToString()
@@ -70,7 +79,7 @@ public class HtmlBuilder
     }
 }
 
-public class HtmlElement
+public class HtmlElementFluent
 {
     public string? Name;
     public string? Text;
@@ -78,17 +87,17 @@ public class HtmlElement
     private const int IndentSize = 2;
 
 
-    public HtmlElement()
+    public HtmlElementFluent()
     {
     }
 
-    public HtmlElement(string? name, string? text)
+    public HtmlElementFluent(string? name, string? text)
     {
         Name = name;
         Text = text;
     }
 
-    internal string ToStringImpl(int indent)
+    private string ToStringImpl(int indent)
     {
         var sb = new StringBuilder();
         var i = new string(' ', IndentSize * indent);
