@@ -2,4 +2,7 @@
 
 Console.WriteLine("I am the factories program.");
 
-new FactoryMethodDemo();
+// var fm = new FactoryMethodDemo();
+// await fm.RunAsync();
+
+new FactoryDemo();
