@@ -6,5 +6,6 @@ Console.WriteLine("I am the factories program.");
 // await fm.RunAsync();
 
 // new FactoryDemo();
-new AbstractFactoryDemo();
-var tea = new Tea();
+// new AbstractFactoryDemo();
+
+new FactoryCodingExercise();
